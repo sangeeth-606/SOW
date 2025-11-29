@@ -1,8 +1,11 @@
 import express from 'express';
 const router = express.Router();
 import { getProducts, updateProduct } from '../controllers/productController.js';
+import { authenticateToken } from '../middleware/authMiddleware.js';
 
-// add middleware to verify JWT
+
+router.use(authenticateToken);
+
 router.get('/', getProducts);
 router.put('/:id', updateProduct);
 
