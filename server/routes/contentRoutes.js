@@ -1,7 +1,8 @@
 import express from 'express';
 const router = express.Router();
-import { getTerms } from '../controllers/contentController.js';
+import { getTerms, getLoginContent } from '../controllers/contentController.js';
 
 router.get('/terms', getTerms);
+router.get('/login', getLoginContent);
 
 export default router;

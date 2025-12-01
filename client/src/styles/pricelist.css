@@ -1,0 +1,602 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.pricelist-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: #f5f7fa;
+    font-family: Arial, sans-serif;
+}
+
+.main-header {
+    background: linear-gradient(to right, #1e88e5, #42a5f5);
+    padding: 12px 25px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 65px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hamburger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger-btn span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: white;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    position: relative;
+}
+
+.avatar img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.company-name {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lang-text {
+    font-size: 14px;
+}
+
+.flag-img {
+    width: 32px;
+    height: 22px;
+    border-radius: 2px;
+}
+
+.main-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 200px;
+    background: white;
+    border-right: 1px solid #e0e0e0;
+    overflow-y: auto;
+    display: block;
+}
+
+.sidebar.closed {
+    display: block;
+}
+
+.sidebar-header {
+    padding: 20px 20px 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.sidebar-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    gap: 10px;
+    position: relative;
+}
+
+.menu-item:hover {
+    background: #f5f5f5;
+}
+
+.menu-item.active {
+    background: #e8f4fc;
+}
+
+.menu-item.disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.status-dot {
+    position: absolute;
+    left: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status-dot.green {
+    background: #4caf50;
+}
+
+.status-dot.red {
+    background: #f44336;
+}
+
+.status-dot.orange {
+    background: #ff9800;
+}
+
+.menu-icon {
+    font-size: 16px;
+    width: 24px;
+    text-align: center;
+}
+
+.menu-icon.blue {
+    filter: hue-rotate(0deg);
+}
+
+.menu-icon.orange {
+    filter: hue-rotate(30deg);
+}
+
+.menu-icon.gray {
+    filter: grayscale(100%);
+    opacity: 0.6;
+}
+
+.menu-label {
+    font-size: 13px;
+    color: #333;
+}
+
+.content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #fafafa;
+}
+
+.toolbar {
+    background: white;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.search-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box input {
+    width: 280px;
+    padding: 8px 35px 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #666;
+}
+
+.search-box input::placeholder {
+    color: #999;
+}
+
+.search-box .search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #29b6f6;
+    font-size: 14px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.btn-action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #333;
+}
+
+.btn-action:hover {
+    background: #f9f9f9;
+}
+
+.btn-text {
+    font-size: 13px;
+}
+
+.btn-icon {
+    font-size: 16px;
+}
+
+.btn-icon.green {
+    color: #4caf50;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.btn-icon.blue {
+    color: #29b6f6;
+}
+
+.toggle-switch {
+    width: 36px;
+    height: 20px;
+    background: #29b6f6;
+    border-radius: 10px;
+    position: relative;
+}
+
+.toggle-switch::after {
+    content: "";
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+}
+
+.pricelist-table-container {
+    flex: 1;
+    overflow: auto;
+    padding: 20px 25px;
+}
+
+.table-wrapper {
+    background: white;
+    overflow-x: auto;
+}
+
+.pricelist-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pricelist-table th {
+    padding: 12px 10px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+}
+
+.sort-arrow {
+    color: #29b6f6;
+    margin-left: 3px;
+}
+
+.pricelist-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.product-row:hover {
+    background: #fafafa;
+}
+
+.arrow {
+    color: #29b6f6;
+    font-size: 16px;
+}
+
+.pricelist-table input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #333;
+}
+
+.pricelist-table input:focus {
+    outline: none;
+    border-color: #29b6f6;
+}
+
+.actions-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #999;
+    letter-spacing: 1px;
+}
+
+.col-arrow {
+    width: 30px;
+}
+
+.col-article {
+    width: 100px;
+}
+
+.col-product {
+    min-width: 250px;
+}
+
+.col-inprice {
+    width: 80px;
+}
+
+.col-price {
+    width: 80px;
+}
+
+.col-unit {
+    width: 110px;
+}
+
+.col-stock {
+    width: 80px;
+}
+
+.col-desc {
+    min-width: 200px;
+}
+
+.col-actions {
+    width: 40px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+    .hamburger-btn {
+        display: flex;
+    }
+
+    .user-profile {
+        display: none;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 65px;
+        left: 0;
+        height: calc(100vh - 65px);
+        z-index: 100;
+        display: none;
+    }
+
+    .sidebar.open {
+        display: block;
+    }
+
+    .sidebar.closed {
+        display: none;
+    }
+
+    .col-inprice,
+    .col-desc {
+        display: none;
+    }
+
+    .btn-text {
+        display: none;
+    }
+
+    .btn-action {
+        padding: 10px 20px;
+        border-radius: 25px;
+    }
+
+    .search-box input {
+        width: 220px;
+        border-radius: 20px;
+        padding: 10px 40px 10px 15px;
+    }
+}
+
+/*phone landscape*/
+@media screen and (max-width: 768px) {
+    .main-header {
+        padding: 12px 15px;
+        height: 60px;
+    }
+
+    .toolbar {
+        flex-direction: column;
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .search-section {
+        width: 100%;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    .search-box input {
+        width: 100%;
+        padding: 12px 45px 12px 20px;
+        border-radius: 30px;
+    }
+
+    .action-buttons {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .btn-action {
+        flex: 1;
+        max-width: 120px;
+        height: 50px;
+        border-radius: 30px;
+        justify-content: center;
+    }
+
+    .col-article,
+    .col-inprice,
+    .col-stock,
+    .col-unit,
+    .col-desc {
+        display: none;
+    }
+
+    .col-product {
+        min-width: 200px;
+    }
+
+    .col-price {
+        width: 100px;
+    }
+
+    .pricelist-table input {
+        padding: 12px 15px;
+        border-radius: 25px;
+    }
+
+    .pricelist-table-container {
+        padding: 15px;
+    }
+
+    .pricelist-table th {
+        padding: 12px 8px;
+    }
+}
+
+/*phone potrait*/
+@media screen and (max-width: 480px) {
+    .main-header {
+        padding: 10px 15px;
+        height: 55px;
+    }
+
+    .hamburger-btn span {
+        width: 22px;
+        height: 3px;
+    }
+
+    .lang-text {
+        font-size: 13px;
+    }
+
+    .flag-img {
+        width: 28px;
+        height: 18px;
+    }
+
+    .toolbar {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .search-box input {
+        padding: 10px 40px 10px 15px;
+        font-size: 14px;
+    }
+
+    .btn-action {
+        height: 46px;
+        max-width: 100px;
+    }
+
+    .col-product {
+        min-width: 150px;
+    }
+
+    .col-price {
+        width: 80px;
+    }
+
+    .pricelist-table input {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    .pricelist-table th {
+        font-size: 13px;
+        padding: 10px 6px;
+    }
+
+    .pricelist-table td {
+        padding: 6px;
+    }
+
+    .pricelist-table-container {
+        padding: 10px;
+    }
+
+    .col-arrow {
+        width: 25px;
+    }
+
+    .col-actions {
+        width: 35px;
+    }
+
+    .actions-btn {
+        font-size: 16px;
+    }
+}

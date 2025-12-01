@@ -15,9 +15,12 @@ CREATE TABLE IF NOT EXISTS content (
 
 CREATE TABLE IF NOT EXISTS products (
     id SERIAL PRIMARY KEY,
+    article_no VARCHAR(20) NOT NULL,
     name VARCHAR(100) NOT NULL,
-    in_price DECIMAL(10, 2) NOT NULL,
-    price DECIMAL(10, 2) NOT NULL,
+    in_price DECIMAL(12, 2) NOT NULL,
+    price DECIMAL(12, 2) NOT NULL,
+    unit VARCHAR(50) DEFAULT 'pcs',
+    in_stock INTEGER DEFAULT 0,
     description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

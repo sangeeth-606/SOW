@@ -1,0 +1,28 @@
+.menu-overlay {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: white;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 8px 0;
+    z-index: 100;
+}
+
+.menu-overlay ul {
+    padding: 10px;
+}
+
+.menu-overlay li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.menu-overlay li:last-child {
+    border-bottom: none;
+}
+
+.menu-overlay li:hover {
+    background-color: #f8f9fa;
+}
