@@ -1,0 +1,10 @@
+# Don't ignore node_modules - we're copying pre-installed deps due to netwrok issue in docker 
+# node_modules
+npm-debug.log
+.env
+.env.local
+.git
+.gitignore
+README.md
+Dockerfile
+.dockerignore

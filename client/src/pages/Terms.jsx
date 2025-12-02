@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_BASE_URL from "../config/api";
 import "../styles/terms.css";
 import "../styles/login.css";
 
@@ -14,13 +15,13 @@ const Terms = () => {
   useEffect(() => {
     // Fetch terms content
     axios
-      .get("http://localhost:5000/api/content/terms")
+      .get(`${API_BASE_URL}/content/terms`)
       .then((res) => setContent(res.data))
       .catch((err) => console.error(err));
 
     // Fetch nav content
     axios
-      .get("http://localhost:5000/api/content/login")
+      .get(`${API_BASE_URL}/content/login`)
       .then((res) => setNavContent(res.data))
       .catch((err) => console.error(err));
   }, []);

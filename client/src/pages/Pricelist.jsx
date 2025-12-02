@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_BASE_URL from "../config/api";
 import "../styles/pricelist.css";
-
-const API_URL = "http://localhost:5000/api";
 
 const Pricelist = () => {
   const [products, setProducts] = useState([]);
@@ -18,7 +17,7 @@ const Pricelist = () => {
     }
 
     axios
-      .get(API_URL + "/products", {
+      .get(API_BASE_URL + "/products", {
         headers: { Authorization: "Bearer " + token },
       })
       .then((res) => {
@@ -47,7 +46,7 @@ const Pricelist = () => {
   const handleBlur = (product) => {
     const token = localStorage.getItem("token");
     axios
-      .put(API_URL + "/products/" + product.id, product, {
+      .put(API_BASE_URL + "/products/" + product.id, product, {
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + token,
