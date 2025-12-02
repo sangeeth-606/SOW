@@ -1,5 +1,7 @@
 version: '3.8'
+
 services:
+
   db:
     image: postgres:15-alpine
     container_name: sow_postgres
@@ -7,10 +9,62 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: sow_db
-    ports:
-      - "5432:5432"
+
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./server/db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./server/db/seeds.sql:/docker-entrypoint-initdb.d/02-seeds.sql
+    networks:
+      - sow_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d sow_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: sow_server
+    environment:
+      - PORT=5000
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=password
+      - DB_NAME=sow_db
+      - JWT_SECRET=your_super_secret_jwt_key_change_in_production
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - sow_network
+    restart: unless-stopped
+
+  # React Frontend via nginx
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+      
+        VITE_API_BASE_URL: /api
+    container_name: sow_client
+    ports:
+      - "80:80"
+    depends_on:
+      - server
+    networks:
+      - sow_network
+    restart: unless-stopped
+
+networks:
+  sow_network:
+    driver: bridge
 
 volumes:
   postgres_data:

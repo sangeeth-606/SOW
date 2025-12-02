@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_BASE_URL from "../config/api";
 import "../styles/login.css";
 
 const Login = () => {
@@ -21,7 +22,7 @@ const Login = () => {
     }
 
     axios
-      .get("http://localhost:5000/api/content/login")
+      .get(`${API_BASE_URL}/content/login`)
       .then((res) => setContent(res.data))
       .catch((err) => console.error(err));
   }, [navigate]);
@@ -51,7 +52,7 @@ const Login = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post(`${API_BASE_URL}/auth/login`, {
         username,
         password,
       });
